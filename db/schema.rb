@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_083706) do
+ActiveRecord::Schema.define(version: 2019_11_10_103745) do
+
+  create_table "boards", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+    t.integer "comment_id"
+    t.string "thread_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
