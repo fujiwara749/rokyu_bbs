@@ -1,0 +1,16 @@
+<h1>ユーザー一覧</h1>
+
+	<thead>
+    	<tr>
+ 	    	<th>ユーザー名</th>
+ 		</tr>
+    </thead>
+    <tbody>
+    	<% @users.each do |user| %>
+        <tr>
+        	<td><%= user.name %></td>
+        	<%= link_to "退会", admin_user_path(user), method: :delete %>
+        </tr>
+        <% end %>
+    </tbody>
+    

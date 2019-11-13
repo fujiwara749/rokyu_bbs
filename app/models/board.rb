@@ -1,5 +1,4 @@
-class Board < ApplicationRecord
- 
-  belongs_to :user 
-  belongs_to :category  
+class Board < ApplicationRecord 
+  
+  # belongs_to :category  
 end

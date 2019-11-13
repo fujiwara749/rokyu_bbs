@@ -1,10 +1,10 @@
 <h1>カテゴリ一覧</h1>
-
-  <% @categories.each do |c| %>
-    <span><%= c.category_name %></span>
-    <%= link_to "削除", admin_category_path(c), method: :delete %>
-  <% end %>
+	<% @categories.each do |c| %>
+    	<span><%= c.category_name %></span>
+    	<%= link_to "削除", admin_category_path(c), method: :delete %>
+  	<% end %>
 
 <%= link_to "カテゴリ追加", new_admin_category_path %>
+
 
 
