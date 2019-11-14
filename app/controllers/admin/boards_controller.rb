@@ -6,7 +6,7 @@ class Admin::BoardsController < ApplicationController
 
     def new
     	@board = Board.new
-    	#@category = Category.new
+    	@category = Category.new
     end
 
     def create
@@ -23,6 +23,6 @@ class Admin::BoardsController < ApplicationController
 
 	private
 	def board_params
-	    params.require(:board).permit(:thread_title)
+	    params.require(:board).permit(:thread_title, :category_id)
 	end
 end

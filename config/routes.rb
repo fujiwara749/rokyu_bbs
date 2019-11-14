@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :admins
   namespace :admin do
   	get 'top', to: 'top#top'
   	resources :boards, only: [:index, :show, :new, :create, :destroy]
