@@ -15,6 +15,9 @@ class Admin::BoardsController < ApplicationController
    		redirect_to admin_boards_path
     end
 
+    def show
+        @board = Board.find(params[:id])
+
     def destroy
     	@board = Board.find(params[:id])
     	@board.destroy

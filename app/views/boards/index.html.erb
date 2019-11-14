@@ -2,5 +2,7 @@
 
 <h2>新着スレッド一覧</h2>
 <% @boards.each do |board| %>
-  <%= thread_title %>
+	<%= link_to board_path(board.id) do %>
+	<%= board.thread_title %>
+	<% end %>
 <% end %>
