@@ -1,0 +1,6 @@
+<h2>スレッド新規投稿</h2>
+<%= form_for @board do |f| %>
+	<%= f.collection_select(:category_id, Category.all, :id, :category_name) %>
+	<%= f.text_field :thread_title %>
+	<%= f.submit '投稿' %>
+<% end %>

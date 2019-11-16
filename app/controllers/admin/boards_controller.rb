@@ -17,6 +17,7 @@ class Admin::BoardsController < ApplicationController
 
     def show
         @board = Board.find(params[:id])
+    end
 
     def destroy
     	@board = Board.find(params[:id])
@@ -27,5 +28,5 @@ class Admin::BoardsController < ApplicationController
 	private
 	def board_params
 	    params.require(:board).permit(:thread_title, :category_id)
-	end
+    end
 end

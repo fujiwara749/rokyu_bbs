@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   get 'home/show'
 
   get 'boards/index'
-  post 'boards/create' => 'topics#create'
+  post 'boards/create' => 'boards#create'
 
-  resources :boards
-    resource :comments, only:
+  resources :boards do
+    resource :comments, only:[:create]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

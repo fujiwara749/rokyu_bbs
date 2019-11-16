@@ -1,1 +1,11 @@
-show.html.erb
+<h1>コメント一覧</h1>
+
+<% @board.comments.each do |c| %>
+	<%= @board.user %>/<%= c.comment %>
+<% end %>
+
+<%= form_for([@board,@comment]) do |f| %>
+	<%= f.text_field :comment %>
+	<%= f.submit 'コメントする' %>
+<% end %>
+
