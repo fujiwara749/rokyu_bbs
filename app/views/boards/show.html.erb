@@ -1,7 +1,9 @@
 <h1>コメント一覧</h1>
 
-<% @board.comments.each do |c| %>
-	<%= @board.user %>/<%= c.comment %>
+<% @board.comments.each do |comment| %>
+	<%= comment.user.name %>/
+	<%= comment.comment %>/
+	<%= comment.created_at.strftime("%Y-%m-%d/%H:%M:%S") %><br>
 <% end %>
 
 <%= form_for([@board,@comment]) do |f| %>

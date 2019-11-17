@@ -1,7 +1,11 @@
 <h2>スレッド一覧</h2>
-	<% @boards.each do |b| %>
-		<span><%= b.thread_title %></span>
-	    <%= link_to "削除", admin_board_path(b), method: :delete %>
+	<% @boards.each do |board| %>
+		<%= link_to admin_board_path(board.id) do %>
+		<%= board.thread_title %>
+		[<%= board.category.category_name %>]
+		(<%= board.comments.count %>)
+		<% end %>
+	    <%= link_to "削除", admin_board_path(board), method: :delete %><br>
 	<% end %>
 
 <%= link_to "新規投稿画面", new_admin_board_path %>

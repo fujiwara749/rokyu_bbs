@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   devise_for :admins
   namespace :admin do
   	get 'top', to: 'top#top'
-  	resources :boards, only: [:index, :show, :new, :create, :destroy]
   	resources :categories, only: [:index, :new, :create, :destroy]
   	resources :users, only: [:index, :show, :edit, :update, :destroy] 
+    resources :boards, only: [:index, :show, :new, :create, :destroy] do
+      resources :comments, only: [:destroy] 
+    end 
   end
 
   devise_for :users

@@ -18,8 +18,14 @@ class BoardsController < ApplicationController
 
     def create
     	@board = Board.new(board_params)
-		@board.save
-		redirect_to boards_path    
+        p @board
+        @board.user_id = current_user.id
+		  if @board.save
+             redirect_to boards_path
+          else 
+            @boards=Board.all
+            render :index
+          end           
     end
 
     private
