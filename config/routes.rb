@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  root to: 'boards#index'
   
   devise_for :admins
   namespace :admin do
-  	get 'top', to: 'top#top'
-  	resources :categories, only: [:index, :new, :create, :destroy]
+    get 'top', to: 'top#top'
+  	resources :categories, only: [:index, :show, :new, :create, :destroy]
   	resources :users, only: [:index, :show, :edit, :update, :destroy] 
     resources :boards, only: [:index, :show, :new, :create, :destroy] do
       resources :comments, only: [:destroy] 
@@ -11,12 +12,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  get 'home/index'
-  get 'home/show'
-
-  get 'boards/index'
-  post 'boards/create' => 'boards#create'
-
+  resources :users, only: [:show, :destroy] 
+  resources :categories, only: [:index, :show]
   resources :boards do
     resource :comments, only:[:create]
   end

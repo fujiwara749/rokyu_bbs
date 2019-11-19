@@ -1,5 +1,6 @@
-<h1>コメント一覧</h1>
-
+<%= render 'header/head1' %>
+<h2>カテゴリ　[<%= @board.category.category_name %>]</h2>
+<h2>　[<%= @board.thread_title %>]</h2>
 <% @board.comments.each do |comment| %>
 	<%= comment.user.name %>/
 	<%= comment.comment %>/
@@ -7,7 +8,8 @@
 <% end %>
 
 <%= form_for([@board,@comment]) do |f| %>
-	<%= f.text_field :comment %>
+	<p>コメント:</p>
+	<%= f.text_area :comment %><br>
 	<%= f.submit 'コメントする' %>
 <% end %>
 

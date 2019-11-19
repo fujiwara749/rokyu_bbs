@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RokyuBbs</title>
+    <title>Rokyubbs</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,18 +12,8 @@
   <body>
     <header>
       <nav>
-        <% if user_signed_in? %>
-          <%= link_to 'アカウント情報', edit_user_registration_path %> |
-        <% else %>
-          <%= link_to "サインイン", new_user_registration_path %>
-          <%= link_to "ログイン", new_user_session_path %>
-        <% end %>
-      </nav>
-    </header>
-
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+       
+       
 
 
     <%= yield %>

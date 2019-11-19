@@ -1,11 +1,8 @@
-<h1>コメント一覧</h1>
-
+<h2>カテゴリ　[<%= @board.category.category_name %>]</h2>
+<h2>　[<%= @board.thread_title %>]</h2>
 <% @board.comments.each do |comment| %>
-	<%= comment.id %>/
 	<%= comment.user.name %>/
 	<%= comment.comment %>/
 	<%= comment.created_at.strftime("%Y-%m-%d/%H:%M:%S") %>
 	<%= link_to "削除", admin_board_comment_path(@board,comment), method: :delete %><br>
 <% end %>
-
-

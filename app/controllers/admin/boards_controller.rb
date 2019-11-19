@@ -2,6 +2,7 @@ class Admin::BoardsController < ApplicationController
 
 	def index
 		@boards = Board.all
+        @categories = Category.all
 	end
 
     def new

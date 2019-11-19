@@ -15,9 +15,10 @@ class ApplicationController < ActionController::Base
     when User
     	boards_path
     end
+
+    
+end
 end
 
 
-
-end
 

@@ -10,4 +10,9 @@
 
 <%= link_to "新規投稿画面", new_admin_board_path %>
 
-
+<h3>カテゴリ一覧</h3>
+	<% @categories.each do |c| %>
+		<%= link_to admin_category_path(c) do %>
+    	<%= c.category_name %><br>
+    	<% end %>
+  	<% end %>

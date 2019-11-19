@@ -1,0 +1,6 @@
+<%= render 'header/head1' %>
+<h1>アカウントページ</h1>
+
+[アカウント名]<%= @user.name %><br>
+
+<%= link_to "退会", user_path,class:"item-link", method: :delete, "data-confirm" => "本当に退会しますか？" %>

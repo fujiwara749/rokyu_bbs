@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
 	def index
 		@boards = Board.all
 		@board = Board.new
+        @categories = Category.all
 	end
 
 	def new

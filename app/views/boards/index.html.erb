@@ -1,14 +1,5 @@
-<h1>トップページ</h1>
-<% if @board.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul>
-      <% @board.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<h2>新着スレッド一覧</h2>
+<%= render 'header/head1' %>
+<h2>スレッド一覧</h2>
 <% @boards.each do |board| %>
 	<%= link_to board_path(board.id) do %>
 	<%= board.thread_title %>
@@ -18,3 +9,10 @@
 <% end %>
 
 <%= link_to '新規投稿画面', new_board_path %>
+
+<h3>カテゴリ一覧</h3>
+  <% @categories.each do |c| %>
+    <%= link_to category_path(c) do %>
+      <%= c.category_name %><br>
+      <% end %>
+<% end %>

@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-  
+
   def index
    	@categories = Category.all
   end
@@ -13,6 +13,11 @@ class Admin::CategoriesController < ApplicationController
   	@category = Category.new(category_params)
   	@category.save
   	redirect_to admin_categories_path
+  end
+
+  def show
+    @category = Category.find(params[:id])
+    @board = Board.find(params[:id])
   end
 
   def destroy
