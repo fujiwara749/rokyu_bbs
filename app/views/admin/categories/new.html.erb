@@ -1,7 +1,8 @@
 <%= render 'header/head2' %>
-<%= form_for([:admin, @category]) do |f| %>
+
+<%= form_for([:admin, @category],url: admin_categories_path, html: { id: "validate_id" }) do |f| %>
   <h4>カテゴリ追加</h4>
-  <%= f.text_field :category_name %>
+  <%= f.text_field :category_name, class: "validate[required]" %>
   <%= f.submit '追加' %>
 <% end %>
   

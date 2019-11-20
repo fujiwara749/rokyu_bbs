@@ -1,4 +1,9 @@
 <%= render 'header/head2' %>
+
+<% if flash[:alert] %>
+ 	<strong><%= flash[:alert] %></strong>
+<% end %>
+
 <h1>管理者TOP</h1>
 
 <%= link_to "スレッド一覧", admin_boards_path %>

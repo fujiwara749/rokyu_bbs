@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
 
+    before_action :login_check, only: [:destroy]    
+
 	def index
 		@users = User.all
     end
@@ -14,4 +16,10 @@ class Admin::UsersController < ApplicationController
     	redirect_to admin_users_path
     end
 
+    def login_check
+        unless admin_signed_in?
+            flash[:alert] = "ユーザー削除にはログインが必要です。"
+            redirect_to admin_top_path
+        end
+    end
 end

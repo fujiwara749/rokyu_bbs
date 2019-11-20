@@ -1,13 +1,4 @@
- <%= render 'header/head2' %>s
- <% if @board.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul>
-      <% @board.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+ <%= render 'header/head2' %>
 
 <%= form_for([:admin, @board]) do |f| %>
   <h2>スレッド新規投稿</h2>

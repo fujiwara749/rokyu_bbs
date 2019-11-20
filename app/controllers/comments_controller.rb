@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :login_check, only: [:create]
 
 	def create
 		board = Board.find(params[:board_id])
@@ -7,6 +8,13 @@ class CommentsController < ApplicationController
 		comment.user_id = current_user.id
 		comment.save
 		redirect_to board_path(board)
+	end
+
+	def login_check
+		unless user_signed_in?
+			flash[:alert] = "コメントするにはログインが必要です。"
+			redirect_to root_path
+		end
 	end
 
 	private

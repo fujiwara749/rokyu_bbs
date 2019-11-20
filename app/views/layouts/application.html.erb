@@ -10,12 +10,14 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-       
-       
 
 
     <%= yield %>
+      <script type="text/javascript">
+    jQuery(document).ready(function(){
+      jQuery("#validate_id").validationEngine();
+    });
+    </script>
   </body>
+    
 </html>

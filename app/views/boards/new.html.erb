@@ -1,7 +1,7 @@
 <%= render 'header/head1' %>
 <h2>スレッド新規投稿</h2>
-<%= form_for @board do |f| %>
+<%= form_for @board,url: boards_path, html: { id: "validate_id" } do |f| %>
 	<%= f.collection_select(:category_id, Category.all, :id, :category_name) %>
-	<%= f.text_field :thread_title %>
+	<%= f.text_field :thread_title, class: "validate[required]" %>
 	<%= f.submit '投稿' %>
 <% end %>

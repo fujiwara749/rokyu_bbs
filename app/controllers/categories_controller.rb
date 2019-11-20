@@ -6,6 +6,5 @@ class CategoriesController < ApplicationController
   
 	def show
 		@category = Category.find(params[:id])
-		@board = Board.find(params[:id])
 	end
 end

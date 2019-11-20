@@ -1,4 +1,9 @@
 <%= render 'header/head1' %>
+
+<% if flash[:alert] %>
+ 	<strong><%= flash[:alert] %></strong>
+<% end %>
+
 <h2>スレッド一覧</h2>
 <% @boards.each do |board| %>
 	<%= link_to board_path(board.id) do %>

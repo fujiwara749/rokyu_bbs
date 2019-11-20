@@ -1,7 +1,9 @@
 class Admin::CategoriesController < ApplicationController
 
+  before_action :login_check, only: [:new, :destroy]
+
   def index
-   	@categories = Category.all
+  @categories = Category.all
   end
 
   def new
@@ -11,20 +13,30 @@ class Admin::CategoriesController < ApplicationController
 
   def create
   	@category = Category.new(category_params)
-  	@category.save
-  	redirect_to admin_categories_path
+  	if @category.save
+      redirect_to admin_categories_path
+    else
+      @categories =Category.all   
+      render :new
+    end
   end
 
   def show
     @category = Category.find(params[:id])
-    @board = Board.find(params[:id])
   end
 
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
     redirect_to admin_categories_path
-  end	
+  end
+
+  def login_check
+    unless admin_signed_in?
+    flash[:alert] = "権限がありません。ログインが必要してください。"
+    redirect_to admin_top_path
+    end
+  end
   
   private
   def category_params

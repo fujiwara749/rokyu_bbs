@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+    before_action :login_check, only: [:new]
 
 	def index
 		@boards = Board.all
@@ -27,6 +28,13 @@ class BoardsController < ApplicationController
             @boards=Board.all
             render :index
           end           
+    end
+
+    def login_check
+        unless user_signed_in?
+            flash[:alert] = "スレッド新規作成はログインが必要です。"
+            redirect_to root_path
+        end
     end
 
     private
