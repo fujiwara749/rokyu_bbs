@@ -33,7 +33,7 @@ class Admin::CategoriesController < ApplicationController
 
   def login_check
     unless admin_signed_in?
-    flash[:alert] = "権限がありません。ログインが必要してください。"
+    flash[:alert] = "権限がありません。ログインが必要です。"
     redirect_to admin_top_path
     end
   end

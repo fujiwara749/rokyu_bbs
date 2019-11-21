@@ -2,10 +2,17 @@ class BoardsController < ApplicationController
     before_action :login_check, only: [:new]
 
 	def index
-		@boards = Board.all
+		@boards = Board.order(created_at: :desc)
 		@board = Board.new
         @categories = Category.all
+        @q = Board.ransack(params[:q])
+        @boards = @q.result(distinct: true)
 	end
+
+    def search
+        @q = Board.ransack(search_params)
+        @boards = @q.result(distinct: true)
+    end
 
 	def new
 		@board = Board.new
@@ -40,5 +47,9 @@ class BoardsController < ApplicationController
     private
     def board_params
     	params.require(:board).permit(:thread_title, :category_id)
+    end
+
+    def search_params
+        params.require(:q).permit!
     end
 end

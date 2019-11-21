@@ -1,6 +1,12 @@
 <%= render 'header/head2' %>
 
-<h2>スレッド一覧</h2>
+<%= search_form_for @q,url: admin_search_path do |f| %>
+	 <%= f.label :スレッド検索 %>
+	 <%= f.search_field :thread_title_cont %>
+	 <%= f.submit %>
+<% end %>
+
+<h2>スレッド一覧（新着順）</h2>
 	<% @boards.each do |board| %>
 		<%= link_to admin_board_path(board.id) do %>
 		<%= board.thread_title %>

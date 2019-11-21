@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   root to: 'boards#index'
+  get 'search', to: 'boards#search'
   
   devise_for :admins
   namespace :admin do
     get 'top', to: 'top#top'
+    scope :boards do
+      get 'search', to: 'boards#search'
+    end
   	resources :categories, only: [:index, :show, :new, :create, :destroy]
   	resources :users, only: [:index, :show, :edit, :update, :destroy] 
     resources :boards, only: [:index, :show, :new, :create, :destroy] do
       resources :comments, only: [:destroy] 
-    end 
+    end
   end
 
   devise_for :users
