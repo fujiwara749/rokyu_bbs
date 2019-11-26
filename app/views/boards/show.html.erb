@@ -1,18 +1,36 @@
 <%= render 'header/head1' %>
 
-<h2>カテゴリ　[<%= @board.category.category_name %>]</h2>
-<h2>　[<%= @board.thread_title %>]</h2>
-<% @board.comments.each do |comment| %>
-	<%= comment.user.name %>/
-	<%= comment.comment %>/
-	<%= comment.created_at.strftime("%Y-%m-%d/%H:%M:%S") %><br>
-<% end %>
+<div class="container">
+	<div class="col-md-7">
+		<div class="box1">
+			<div>
+				<h2>カテゴリ　[<%= @board.category.category_name %>]</h2>
+				<h2>[<%= @board.thread_title %>]</h2>
+				<% @comments.each do |comment| %>
+					<%= comment.user.name %>/
+					<%= comment.comment %>/
+					<%= comment.created_at.strftime("%Y-%m-%d/%H:%M:%S") %><br>
+				<% end %>
+				<%= paginate @comments, class: "paginate" %>
 
-<%= form_for([@board,@comment], html: { id: "validate_id"}) do |f| %>
-	<p>コメント:</p>
-	<%= f.text_area :comment, class: "validate[required]" %><br>
-	<%= f.submit 'コメントする' %>
-<% end %>
+				<%= form_for([@board,@comment], html: { id: "validate_id"}) do |f| %>
+					<p>コメント:</p>
+					<%= f.text_area :comment, class: "validate[required]" %><br>
+					<%= f.submit 'コメントする' %>
+				<% end %>
+				<%= link_to "スレッド一覧に戻る", root_path %>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-5">
+		<div>
+			<h3>カテゴリ一覧</h3>
+			<% @categories.each do |c| %>
+				<%= link_to category_path(c) do %>
+				<%= c.category_name %><br>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
 
-
-<%= link_to "スレッド一覧に戻る", root_path %>

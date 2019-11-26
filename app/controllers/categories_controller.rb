@@ -5,14 +5,8 @@ class CategoriesController < ApplicationController
     end
   
 	def show
+		@categories = Category.all
 		@category = Category.find(params[:id])
-		@q = Board.ransack(params[:q])
-		@boards = @q.result(distinct: true)
-	end
-
-	def search
-		@q = Board.ransack(search_params)
-		@boards = @q.result(distinct: true)
 	end
 end
 

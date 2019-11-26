@@ -1,11 +1,10 @@
  <%= render 'header/head2' %>
 
+<!-- 管理者側でテスト用に作成 -->
+
 <%= form_for([:admin, @board]) do |f| %>
   <h2>スレッド新規投稿</h2>
 	<%= f.collection_select(:category_id, Category.all, :id, :category_name) %>
 	<%= f.text_field :thread_title %>
 	<%= f.submit '投稿' %>
 <% end %>
-
-<!-- メソッド(引数) --> 
-<!-- メソッド 引数 --> 

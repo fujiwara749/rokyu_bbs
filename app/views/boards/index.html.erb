@@ -4,26 +4,38 @@
  	<strong><%= flash[:alert] %></strong>
 <% end %>
 
-<%= search_form_for @q do |f| %>
-	 <%= f.label :スレッド検索 %>
-	 <%= f.search_field :thread_title_cont %>
-	 <%= f.submit %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="box1">
+				<div>
+					<%= search_form_for @q do |f| %>
+						 <%= f.label :スレッド検索 %>
+						 <%= f.search_field :thread_title_cont %>
+						 <%= f.submit %>
+					<% end %>
 
-<h2>スレッド一覧(新着順）</h2>
-<% @boards.each do |board| %>
-	<%= link_to board_path(board.id) do %>
-	<%= board.thread_title %>
-	[<%= board.category.category_name %>]
-	(<%= board.comments.count %>)<br>
-	<% end %>
-<% end %>
-
-<%= link_to '新規投稿画面', new_board_path %>
-
-<h3>カテゴリ一覧</h3>
-  <% @categories.each do |c| %>
-    <%= link_to category_path(c) do %>
-      <%= c.category_name %><br>
-      <% end %>
-<% end %>
+					<%= link_to '新規スレッド作成', new_board_path %>
+					<h2>スレッド一覧</h2>
+					<% @boards.reverse.each do |board| %>
+						<%= link_to board_path(board.id) do %>
+						<%= board.thread_title %>
+						[<%= board.category.category_name %>]
+						(<%= board.comments.count %>)<br>
+						<% end %>
+					<% end %>
+					<%= paginate @boards %>					
+				</div>
+			</div>
+		</div>
+	<div class="col-md-5">
+		<div>
+			<h3>カテゴリ一覧</h3>
+			  <% @categories.each do |c| %>
+			    <%= link_to category_path(c) do %>
+			      <%= c.category_name %><br>
+			      <% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

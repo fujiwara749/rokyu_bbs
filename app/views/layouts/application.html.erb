@@ -10,14 +10,19 @@
   </head>
 
   <body>
+    <div class="wrapper">
 
 
-    <%= yield %>
+     <%= yield %>
+    </div>
       <script type="text/javascript">
     jQuery(document).ready(function(){
       jQuery("#validate_id").validationEngine();
     });
     </script>
+    <footer>
+        <p class="footer-text">籠球BBS (CopyRight)</p>
+    </footer>
   </body>
     
 </html>

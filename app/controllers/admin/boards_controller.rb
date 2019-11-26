@@ -3,16 +3,21 @@ class Admin::BoardsController < ApplicationController
     before_action :login_check, only: [:destroy]
 
 	def index
-		@boards = Board.order(created_at: :desc)
-        @categories = Category.all
         @q = Board.ransack(params[:q])
-        @boards = @q.result(distinct: true)
+        if params[:q].present?
+            @boards = @q.result(distinct: true).page(params[:page]).per(15)
+        else
+            @boards = Board.all.order(created_at: :desc)
+            @boards = @boards.page(params[:page]).per(15)
+        end
+        @categories = Category.all
 	end
 
     def search
       if params[:q]
         @q = Board.ransack(search_params)
         @boards = @q.result(distinct: true)
+        @boards = @boards.page(params[:page]).per(15)
         @categories = Category.all
         render "index"
       end
@@ -21,9 +26,10 @@ class Admin::BoardsController < ApplicationController
     def new
     	@board = Board.new
     	@category = Category.new
+        
     end
 
-    def createc
+    def create
     	@board = Board.new(board_params)
         @board.save
    		redirect_to admin_boards_path
@@ -31,6 +37,8 @@ class Admin::BoardsController < ApplicationController
 
     def show
         @board = Board.find(params[:id])
+        @categories = Category.all
+        @comments = @board.comments.page(params[:page])
     end
 
     def destroy

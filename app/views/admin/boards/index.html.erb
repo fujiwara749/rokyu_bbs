@@ -1,24 +1,38 @@
 <%= render 'header/head2' %>
 
-<%= search_form_for @q,url: admin_search_path do |f| %>
-	 <%= f.label :スレッド検索 %>
-	 <%= f.search_field :thread_title_cont %>
-	 <%= f.submit %>
-<% end %>
-
-<h2>スレッド一覧（新着順）</h2>
-	<% @boards.each do |board| %>
-		<%= link_to admin_board_path(board.id) do %>
-		<%= board.thread_title %>
-		[<%= board.category.category_name %>]
-		(<%= board.comments.count %>)
-		<% end %>
-	    <%= link_to "削除", admin_board_path(board), method: :delete %><br>
-	<% end %>
-
-<h3>カテゴリ一覧</h3>
-	<% @categories.each do |c| %>
-		<%= link_to admin_category_path(c) do %>
-    	<%= c.category_name %><br>
-    	<% end %>
-  	<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="box1">
+				<div>
+					<%= search_form_for @q,url: admin_search_path do |f| %>
+		 				<%= f.label :スレッド検索 %>
+		 				<%= f.search_field :thread_title_cont %>
+		 				<%= f.submit %>
+					<% end %>
+            
+					<h2>スレッド一覧</h2>
+						<% @boards.reverse.each do |board| %>
+							<%= link_to admin_board_path(board.id) do %>
+							<%= board.thread_title %>
+							[<%= board.category.category_name %>]
+							(<%= board.comments.count %>)
+						<% end %>
+			    		<%= link_to "削除", admin_board_path(board), method: :delete %><br>
+					<% end %>
+					<%= paginate @boards %>
+				</div>	
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div>
+				<h3>カテゴリ一覧</h3>
+				<% @categories.each do |c| %>
+					<%= link_to admin_category_path(c) do %>
+				   	<%= c.category_name %><br>
+				   	<% end %>
+			  	<% end %>
+			</div>
+		</div>
+	</div>
+</div>	  	

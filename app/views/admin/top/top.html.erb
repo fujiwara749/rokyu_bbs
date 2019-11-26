@@ -1,12 +1,32 @@
 <%= render 'header/head2' %>
 
-<% if flash[:alert] %>
- 	<strong><%= flash[:alert] %></strong>
-<% end %>
-
-<h1>管理者TOP</h1>
-
-<%= link_to "スレッド一覧", admin_boards_path %>
-<%= link_to "ユーザー一覧", admin_users_path %>
-<%= link_to "カテゴリ一覧", admin_categories_path %>
-
+<div class="container">
+	<div class="row">
+		<div class="col-md-12"><br><br></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<% if flash[:alert] %>
+				<strong><%= flash[:alert] %></strong>
+			<% end %>
+			<h1>管理者TOP</h1>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<div>
+				<%= link_to "スレッド一覧", admin_boards_path, class: "btn btn-default col-md-12" %>
+            </div>
+            <div>
+            	<%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-default col-md-12" %>
+            </div>
+            <div>
+            	<%= link_to "カテゴリ一覧", admin_categories_path, class: "btn btn-default col-md-12" %>
+            </div>
+         </div>
+         <div class="col-md-4"></div>
+    </div>
+</div>

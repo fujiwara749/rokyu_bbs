@@ -14,3 +14,35 @@
  *= require_self
  *= require validationEngine.jquery
  */
+ @import "bootstrap";
+ @import "bootstrap-sprockets";
+
+.header{
+    background-color: #eaf3ff;
+    width: 100%;
+}
+
+footer{
+	background-color: #eaf3ff;
+	width:100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    font-size: 15px
+}
+
+.footer-text{
+    width: 77px;
+    margin: 30px auto;
+}
+
+ h1 {
+ text-align: center;
+ }
+
+.box1 {
+  width: 500px;
+  height: 300px;
+  margin:0 auto;
+  font-size: 15px  
+}

@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :login_check, only: [:new, :destroy]
 
   def index
-  @categories = Category.all
+  @categories = Category.page(params[:page]).per(9)
   end
 
   def new
@@ -16,12 +16,13 @@ class Admin::CategoriesController < ApplicationController
   	if @category.save
       redirect_to admin_categories_path
     else
-      @categories =Category.all   
+      @categories =Category.all
       render :new
     end
   end
 
   def show
+    @categories = Category.all
     @category = Category.find(params[:id])
   end
 

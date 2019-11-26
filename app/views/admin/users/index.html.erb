@@ -1,17 +1,33 @@
 <%= render 'header/head2' %>
-<h1>ユーザー一覧</h1>
 
-	<thead>
-    	<tr>
- 	    	<th>ユーザー名</th>
- 		</tr>
-    </thead>
-    <tbody>
-    	<% @users.each do |user| %>
-        <tr>
-        	<td><%= user.name %></td>
-        	<%= link_to "退会", admin_user_path(user), method: :delete %>
-        </tr>
-        <% end %>
-    </tbody>
-    
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>ユーザー一覧</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ユーザー名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user| %>
+                    <tr>
+                        <td>
+                            <%= user.name %>
+                        </td>
+                        <td>
+                        <%= link_to "退会", admin_user_path(user), method: :delete %>
+                        </td>
+                    </tr>
+                    <% end %>
+                    <%= paginate @users %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

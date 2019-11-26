@@ -1,9 +1,28 @@
 <%= render 'header/head2' %>
-<h2>カテゴリ[<%= @category.category_name %>]</h2>
 
-<% @category.boards.each do |board| %>
-	<%= link_to admin_board_path(board.id) do %>
-	<%= board.thread_title %>
-	(<%= board.comments.count %>)<br>
-	<% end %>
-<% end %>
+<div class="container">
+	<div class="col-md-7">
+		<div class="box1">
+			<div>
+				<h2>カテゴリ　[<%= @category.category_name %>]</h2>
+				<% @category.boards.each do |board| %>
+					<%= link_to admin_board_path(board.id) do %>
+					<%= board.thread_title %>
+					(<%= board.comments.count %>)<br>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-5">
+		<div>
+			<h3>カテゴリ一覧</h3>
+			<% @categories.each do |c| %>
+				<%= link_to admin_category_path(c) do %>
+				<%= c.category_name %><br>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
