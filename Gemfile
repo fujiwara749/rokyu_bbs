@@ -64,7 +64,7 @@ gem 'devise'
 gem "jquery-rails"
 gem 'jQuery-Validation-Engine-rails'
 gem 'ransack'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'kaminari','~> 1.1.1'
 gem 'paranoia'
 
