@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
     before_action :login_check, only: [:destroy]    
 
 	def index
-		@users = User.page(params[:page]).per(10)
+	    @users = User.with_deleted.page(params[:page]).per(10)
     end
 
     def show

@@ -9,6 +9,7 @@
 <% if admin_signed_in? %>
 	<!--アドミンーログイン済み-->
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to '管理者TOPページ', admin_top_path, class:"header-link" %></li>
         <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"header-link" %></li>
       </ul>
     <% else %>

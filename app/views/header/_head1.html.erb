@@ -9,7 +9,7 @@
 <% if user_signed_in? %>
       <!--エンドユーザーログイン済み-->
       <ul class="nav navbar-nav navbar-right">
-        
+        <li><%= link_to 'TOPページ', root_path, class:"header-link" %></li>
         <li><%= link_to 'アカウント情報', user_path(current_user.id), class:"header-link" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"header-link" %></li>
       </ul>
