@@ -4,7 +4,7 @@
 	<div class="col-md-7">
 		<div class="box1">
 			<div>
-				<h2>カテゴリ　[<%= @board.category.category_name %>]</h2>
+				<h2>カテゴリ[<%= @board.category.category_name %>]</h2>
 				<h2>[<%= @board.thread_title %>]</h2>
 				<% @comments.each do |comment| %>
 					<%= comment.user.name %>/
