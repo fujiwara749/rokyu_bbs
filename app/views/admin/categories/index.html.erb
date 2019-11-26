@@ -15,7 +15,7 @@
 				   		<% end %>
 				   	</td>
 				   	<td>
-				   		<%= link_to "削除", admin_category_path(c), method: :delete %>
+				   		<%= link_to "削除", admin_category_path(c), method: :delete, "data-confirm"=> "本当に削除しますか?" %>
 				   	</td>		  		
 				 <% end %>
 				 <%= paginate @categories %>

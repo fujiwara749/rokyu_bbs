@@ -18,7 +18,7 @@
 							[<%= board.category.category_name %>]
 							(<%= board.comments.count %>)
 						<% end %>
-			    		<%= link_to "削除", admin_board_path(board), method: :delete %><br>
+			    		<%= link_to "削除", admin_board_path(board), method: :delete, "data-confirm"=> "本当に削除しますか?" %><br>
 					<% end %>
 					<%= paginate @boards %>
 				</div>	

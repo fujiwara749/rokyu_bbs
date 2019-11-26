@@ -4,11 +4,12 @@
 	<div class="col-md-7">
 		<div class="box1">
 			<div>
-				<h2>カテゴリ　[<%= @category.category_name %>]</h2>
+				<h2>カテゴリ[<%= @category.category_name %>]</h2>
 				<% @category.boards.each do |board| %>
 					<%= link_to admin_board_path(board.id) do %>
 					<%= board.thread_title %>
-					(<%= board.comments.count %>)<br>
+					(<%= board.comments.count %>)
+					<%= link_to "削除", admin_board_path(board), method: :delete, "data-confirm"=> "本当に削除しますか?" %><br>
 					<% end %>
 				<% end %>
 			</div>

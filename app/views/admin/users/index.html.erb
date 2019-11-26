@@ -21,7 +21,7 @@
                             <%= user.name %>
                         </td>
                         <td>
-                        <%= link_to "退会", admin_user_path(user), method: :delete %>
+                        <%= link_to "退会", admin_user_path(user), method: :delete, "data-confirm"=> "本当に削除しますか?" %>
                         </td>
                     </tr>
                     <% end %>
